@@ -350,7 +350,7 @@ class _EpubViewState extends State<EpubView> {
             tagMatcher('img'):
                 CustomRender.widget(widget: (context, buildChildren) {
               var url = context.tree.element!.attributes['src']!;
-              return CachedNetworkImage(imageUrl: url);
+              return Image.network(url);
             }),
           },
         ),
