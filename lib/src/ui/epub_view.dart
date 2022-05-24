@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:epub_view/src/data/epub_cfi_reader.dart';
 import 'package:epub_view/src/data/epub_parser.dart';
@@ -351,7 +352,7 @@ class _EpubViewState extends State<EpubView> {
               var url = context.tree.element!.attributes['src']!;
               return Image(
                 image: (url.startsWith(RegExp(r'https?:\/\/'))
-                    ? NetworkImage(url)
+                    ? CachedNetworkImage(imageUrl: url)
                     : MemoryImage(
                         Uint8List.fromList(
                           document.Content!.Images![url.replaceAll('../', '')]!
