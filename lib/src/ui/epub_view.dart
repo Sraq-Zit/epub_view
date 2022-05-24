@@ -334,7 +334,7 @@ class _EpubViewState extends State<EpubView> {
 
     final defaultBuilder = builders as EpubViewBuilders<DefaultBuilderOptions>;
     final options = defaultBuilder.options;
-
+    final ctx = context;
     return Column(
       children: <Widget>[
         if (chapterIndex >= 0 && paragraphIndex == 0)
@@ -351,10 +351,12 @@ class _EpubViewState extends State<EpubView> {
             tagMatcher('img'):
                 CustomRender.widget(widget: (context, buildChildren) {
               var url = context.tree.element!.attributes['src']!;
+              var height = MediaQuery.of(ctx).size.height;
+              var padding = MediaQuery.of(ctx).padding;
               return url.startsWith(RegExp(r'https?://'))
                   ? SvgPicture.network(
                       url,
-                      allowDrawingOutsideViewBox: true,
+                      height: height - padding.top - padding.bottom,
                     )
                   : Image(
                       image: MemoryImage(
