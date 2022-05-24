@@ -10,6 +10,7 @@ import 'package:epub_view/src/data/models/chapter_view_value.dart';
 import 'package:epub_view/src/data/models/paragraph.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 export 'package:epubx/epubx.dart' hide Image;
@@ -350,7 +351,7 @@ class _EpubViewState extends State<EpubView> {
             tagMatcher('img'):
                 CustomRender.widget(widget: (context, buildChildren) {
               var url = context.tree.element!.attributes['src']!;
-              return Image.network(url);
+              return SvgPicture.network(url);
             }),
           },
         ),
