@@ -354,7 +354,7 @@ class _EpubViewState extends State<EpubView> {
               return url.startsWith(RegExp(r'https?://'))
                   ? SvgPicture.network(
                       url,
-                      height: 116,
+                      fit: BoxFit.fitWidth,
                     )
                   : Image(
                       image: MemoryImage(
