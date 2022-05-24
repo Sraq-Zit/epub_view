@@ -352,7 +352,10 @@ class _EpubViewState extends State<EpubView> {
                 CustomRender.widget(widget: (context, buildChildren) {
               var url = context.tree.element!.attributes['src']!;
               return url.startsWith(RegExp(r'https?://'))
-                  ? SvgPicture.network(url)
+                  ? SvgPicture.network(
+                      url,
+                      height: 116,
+                    )
                   : Image(
                       image: MemoryImage(
                         Uint8List.fromList(
