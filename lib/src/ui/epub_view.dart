@@ -346,22 +346,22 @@ class _EpubViewState extends State<EpubView> {
               padding: options.paragraphPadding as EdgeInsets?,
             ).merge(Style.fromTextStyle(options.textStyle)),
           },
-          customRenders: {
-            tagMatcher('img'):
-                CustomRender.widget(widget: (context, buildChildren) {
-              var url = context.tree.element!.attributes['src']!;
-              return Image(
-                image: (url.startsWith(RegExp(r'https?:\/\/'))
-                    ? CachedNetworkImage(imageUrl: url)
-                    : MemoryImage(
-                        Uint8List.fromList(
-                          document.Content!.Images![url.replaceAll('../', '')]!
-                              .Content!,
-                        ),
-                      )) as ImageProvider,
-              );
-            }),
-          },
+          // customRenders: {
+          //   tagMatcher('img'):
+          //       CustomRender.widget(widget: (context, buildChildren) {
+          //     var url = context.tree.element!.attributes['src']!;
+          //     return Image(
+          //       image: (url.startsWith(RegExp(r'https?:\/\/'))
+          //           ? CachedNetworkImage(imageUrl: url)
+          //           : MemoryImage(
+          //               Uint8List.fromList(
+          //                 document.Content!.Images![url.replaceAll('../', '')]!
+          //                     .Content!,
+          //               ),
+          //             )) as ImageProvider,
+          //     );
+          //   }),
+          // },
         ),
       ],
     );
